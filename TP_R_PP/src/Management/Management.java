@@ -15,12 +15,14 @@ import order.management.IOrder;
 * Número: 8160299
 * Turma: LSIRCT1
  */
-
-public class Management implements IManagement{
+public class Management implements IManagement {
 
     @Override
     public boolean add(IOrder iorder) throws OrderException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (iorder == null) {
+            throw new Exceptions.OrderException("The order is null");
+        }
+        return true;
     }
 
     @Override
@@ -37,5 +39,5 @@ public class Management implements IManagement{
     public IOrder[] getOrders() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

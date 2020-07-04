@@ -21,7 +21,6 @@ import order.packing.IItem;
 * Número: 8160299
 * Turma: LSIRCT1
  */
-
 public class Order implements IOrder {
 
     private Person destination;
@@ -73,7 +72,7 @@ public class Order implements IOrder {
 
     @Override
     public void setId(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.id = i;
     }
 
     @Override
@@ -83,7 +82,7 @@ public class Order implements IOrder {
 
     @Override
     public void setDate(int i, int i1, int i2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        LocalDate date = LocalDate.of(i, i1, i2);
     }
 
     @Override
@@ -93,7 +92,10 @@ public class Order implements IOrder {
 
     @Override
     public boolean add(IItem iitem) throws OrderException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (iitem == null) {
+            throw new OrderException("The item is null");
+        }
+        return true;
     }
 
     @Override
@@ -103,7 +105,10 @@ public class Order implements IOrder {
 
     @Override
     public boolean addShipping(IShipping is) throws OrderException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (is == null || this.isClosed()) {
+            throw new OrderException("The order is closed or he shipping is null");
+        }
+        return true;
     }
 
     @Override

@@ -5,6 +5,7 @@
  */
 package Base;
 
+import java.util.Objects;
 import order.base.IAddress;
 
 /**
@@ -75,6 +76,43 @@ public class Address implements IAddress {
     @Override
     public void setStreet(String string) {
         this.street = string;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Address other = (Address) obj;
+        if (this.number != other.number) {
+            return false;
+        }
+        if (!Objects.equals(this.city, other.city)) {
+            return false;
+        }
+        if (!Objects.equals(this.country, other.country)) {
+            return false;
+        }
+        if (!Objects.equals(this.state, other.state)) {
+            return false;
+        }
+        if (!Objects.equals(this.street, other.street)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" + "city=" + this.city + ", country=" + this.country
+                + ", number=" + this.number + ", state=" + this.state
+                + ", street=" + this.street + '}';
     }
 
 }
